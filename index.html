@@ -32,13 +32,15 @@ function gup( name ) {
 function decode(strToDecode) {
     'use strict';
     var encoded = strToDecode;
+    encoded = encoded.replace(/\//g,  '');
     return unescape(encoded.replace(/\+/g,  ' '));
 }
 
 </script>
 <body>
-  <p>Draw a heart!</p>
-  <canvas id="c" width="400" height="300"></canvas>
+  <p>Follow the instructions:</p>
+  <p id="question"></p>
+  <canvas id="c" width="600" height="400"></canvas>
   <div><button onClick="clear_canvas()" >Clear</button>
   <form id="mturk_form" method="POST" action="http://www.mturk.com/mturk/externalSubmit" onsubmit="return submitForm()">
     <input type="hidden" id="assignmentId" name="assignmentId" value="">
@@ -104,6 +106,7 @@ function submitForm() {
   return true;
 }
 document.getElementById('assignmentId').value = gup('assignmentId');
+document.getElementById('question').innerHTML = decode(gup('question'));
 if (gup('assignmentId') === 'ASSIGNMENT_ID_NOT_AVAILABLE') {
     document.getElementById('submitButton').disabled = true;
     document.getElementById('submitButton').value = 'You must ACCEPT the HIT before you can submit the results.';
