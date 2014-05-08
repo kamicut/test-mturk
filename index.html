@@ -3,6 +3,9 @@
 <style type="text/css">
   #c {
     border: 1px solid black;
+    float:left;
+    margin-right:20px;
+    cursor: crosshair;
   }
 </style>
 <script>
@@ -38,11 +41,13 @@ function decode(strToDecode) {
 
 </script>
 <body>
-  <p>Follow the instructions:</p>
-  <p id="question"></p>
   <canvas id="c" width="600" height="400"></canvas>
-  <div><button onClick="clear_canvas()" >Clear</button>
+  <div style="margin: 20px"><p>Follow the instructions:</p>
+    <p id="question"></p>
+  <button onClick="clear_canvas()" >Clear
+  </button>
   <form id="mturk_form" method="POST" action="http://www.mturk.com/mturk/externalSubmit" onsubmit="return submitForm()">
+    
     <input type="hidden" id="assignmentId" name="assignmentId" value="">
     <input type="hidden" id="image" name="image" value="">
     <input type="submit" value="Submit">
