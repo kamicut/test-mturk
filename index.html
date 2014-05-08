@@ -83,9 +83,9 @@ el.onmousemove = function(e) {
     dy = points[i].y - points[points.length-1].y;
     d = dx * dx + dy * dy;
 
-    if (d < 1000) {
+    if (d < 100) {
       ctx.beginPath();
-      ctx.strokeStyle = 'rgba(0,0,0,0.3)';
+      ctx.strokeStyle = 'rgba(0,0,0,0.8)';
       ctx.moveTo( points[points.length-1].x + (dx * 0.2), points[points.length-1].y + (dy * 0.2));
       ctx.lineTo( points[i].x - (dx * 0.2), points[i].y - (dy * 0.2));
       ctx.stroke();
